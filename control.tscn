@@ -1,0 +1,70 @@
+[gd_scene load_steps=7 format=3 uid="uid://c3pkughtk6jbf"]
+
+[ext_resource type="Script" path="res://control.gd" id="1_34qkh"]
+[ext_resource type="Material" uid="uid://dremaqtc8wusj" path="res://edge_mat.tres" id="2_2ci5c"]
+[ext_resource type="ArrayMesh" uid="uid://et60kni7w2mk" path="res://pyramid.obj" id="2_v5rnx"]
+[ext_resource type="ArrayMesh" uid="uid://ycal1j1t5yob" path="res://pyramid_frame.obj" id="3_u7e0u"]
+[ext_resource type="QuadMesh" uid="uid://q1k20ukqdq53" path="res://depth_outline.tres" id="4_imclo"]
+
+[sub_resource type="Environment" id="Environment_a2e3r"]
+background_mode = 1
+background_color = Color(0, 0, 0, 0)
+ambient_light_source = 2
+ambient_light_color = Color(0.301961, 0.160784, 0.160784, 1)
+reflected_light_source = 1
+
+[node name="control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_34qkh")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+stretch_shrink = 5
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(256, 144)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 0.895067, 0.445932, 0, -0.445932, 0.895067, 0, 0.883242, 2.43834)
+
+[node name="Pyramid" type="MeshInstance3D" parent="SubViewportContainer/SubViewport"]
+unique_name_in_owner = true
+transform = Transform3D(0.628059, 0.266949, -0.729238, 0.772994, -0.305427, 0.553889, -0.0750031, -0.912671, -0.398682, 0, 0, 0)
+material_override = ExtResource("2_2ci5c")
+mesh = ExtResource("2_v5rnx")
+skeleton = NodePath("../../..")
+
+[node name="PyramidFrame" type="MeshInstance3D" parent="SubViewportContainer/SubViewport"]
+visible = false
+mesh = ExtResource("3_u7e0u")
+skeleton = NodePath("../../..")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport"]
+environment = SubResource("Environment_a2e3r")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport"]
+mesh = ExtResource("4_imclo")

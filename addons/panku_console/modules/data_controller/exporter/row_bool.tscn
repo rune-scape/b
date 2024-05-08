@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://i2pcctq0i2o3"]
+
+[ext_resource type="Theme" uid="uid://bk18yfu0d77wk" path="res://addons/panku_console/res/panku_console_theme.tres" id="1_u58sr"]
+[ext_resource type="Script" path="res://addons/panku_console/modules/data_controller/exporter/row_bool.gd" id="2_7s1gp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xi8jw"]
+
+[node name="RowBool" type="HBoxContainer" node_paths=PackedStringArray("check_box", "label", "label_btn")]
+theme = ExtResource("1_u58sr")
+script = ExtResource("2_7s1gp")
+check_box = NodePath("HBoxContainer/CheckBox")
+label = NodePath("HBoxContainer/Label")
+label_btn = NodePath("HBoxContainer/Label/Button")
+
+[node name="VName" type="Label" parent="."]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "value3"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="CheckBox" type="CheckBox" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xi8jw")
+flat = true
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "Off"
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="HBoxContainer/Label"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true

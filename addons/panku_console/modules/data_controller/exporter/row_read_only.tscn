@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://dal16suyx5int"]
+
+[ext_resource type="Script" path="res://addons/panku_console/modules/data_controller/exporter/row_read_only.gd" id="1_nsq5x"]
+
+[node name="RowReadOnly" type="HBoxContainer" node_paths=PackedStringArray("button", "name_label")]
+script = ExtResource("1_nsq5x")
+button = NodePath("Button")
+name_label = NodePath("VName")
+
+[node name="VName" type="Label" parent="."]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+text = "value1"
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+text = "Disabled"
+text_overrun_behavior = 3
+clip_text = true

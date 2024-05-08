@@ -1,0 +1,168 @@
+[gd_scene load_steps=14 format=3 uid="uid://cdlsognl6vnfr"]
+
+[ext_resource type="Script" path="res://he.gd" id="1_iqude"]
+[ext_resource type="Texture2D" uid="uid://bdlxr18egp2f2" path="res://DarkForest1.2/castle_env.png" id="2_pyklc"]
+[ext_resource type="FontFile" uid="uid://csguvmqdox7ik" path="res://PixelNarrative/PixelNarrative/PixelNarrative-Bold.ttf" id="2_qyj72"]
+[ext_resource type="VideoStream" path="res://output.ogv" id="3_vl8qd"]
+[ext_resource type="Shader" path="res://he.gdshader" id="5_v6si2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxa0i"]
+atlas = ExtResource("2_pyklc")
+region = Rect2(496, 352, 143, 64)
+
+[sub_resource type="LabelSettings" id="LabelSettings_oajp0"]
+font = ExtResource("2_qyj72")
+font_size = 64
+font_color = Color(0.847059, 0.862745, 0.643137, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_isr32"]
+font = ExtResource("2_qyj72")
+font_size = 64
+font_color = Color(0.847059, 0.14902, 0.101961, 1)
+shadow_size = 0
+shadow_color = Color(1, 1, 1, 0.529412)
+
+[sub_resource type="LabelSettings" id="LabelSettings_pvba6"]
+font = ExtResource("2_qyj72")
+font_size = 64
+font_color = Color(0.847059, 0.14902, 0.101961, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_1o2p2"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6crvc"]
+resource_local_to_scene = true
+shader = ExtResource("5_v6si2")
+shader_parameter/world_tex = SubResource("ViewportTexture_1o2p2")
+
+[sub_resource type="Animation" id="Animation_7ekut"]
+resource_name = "new_animation"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 5),
+"transitions": PackedFloat32Array(1, 5, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(120, 120)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5, 5),
+"transitions": PackedFloat32Array(1, 5, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(-10924, -17647)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_18cju"]
+_data = {
+"new_animation": SubResource("Animation_7ekut")
+}
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_iqude")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+handle_input_locally = false
+size = Vector2i(1280, 720)
+render_target_update_mode = 4
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewport"]
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport"]
+transform = Transform3D(0.7998, -0.144028, 0.582732, 0, 0.970788, 0.23994, -0.600267, -0.191904, 0.776436, 1.18834, 0.743859, 1.2051)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewport"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(640, 360)
+color = Color(0.027451, 0.027451, 0.027451, 1)
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -299.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = SubResource("AtlasTexture_vxa0i")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="ColorRect/TextureRect"]
+layout_mode = 0
+offset_left = 310.0
+offset_top = 51.0
+offset_right = 878.0
+offset_bottom = 225.0
+text = "Theres no more       ,
+youll have to get more"
+label_settings = SubResource("LabelSettings_oajp0")
+autowrap_mode = 2
+
+[node name="Label3" type="Label" parent="ColorRect/TextureRect/Label"]
+layout_mode = 0
+offset_left = 369.0
+offset_right = 497.0
+offset_bottom = 69.0
+text = "blood"
+label_settings = SubResource("LabelSettings_isr32")
+autowrap_mode = 2
+
+[node name="Label2" type="Label" parent="ColorRect/TextureRect/Label/Label3"]
+clip_children = 1
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 69.0
+text = "blood"
+label_settings = SubResource("LabelSettings_pvba6")
+autowrap_mode = 2
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="ColorRect/TextureRect/Label/Label3/Label2"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -178.0
+offset_top = 17.0
+offset_right = 1742.0
+offset_bottom = 1105.0
+scale = Vector2(0.25, 0.25)
+stream = ExtResource("3_vl8qd")
+autoplay = true
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect/TextureRect/Label/Label3"]
+material = SubResource("ShaderMaterial_6crvc")
+layout_mode = 0
+offset_left = 48.0
+offset_top = 31.0
+offset_right = 56.0
+offset_bottom = 39.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+method_call_mode = 1
+libraries = {
+"": SubResource("AnimationLibrary_18cju")
+}

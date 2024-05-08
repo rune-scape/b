@@ -1,0 +1,15 @@
+[gd_resource type="QuadMesh" load_steps=3 format=3 uid="uid://q1k20ukqdq53"]
+
+[ext_resource type="Shader" path="res://depth_outline.gdshader" id="1_i6eoq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rweh0"]
+render_priority = 0
+shader = ExtResource("1_i6eoq")
+shader_parameter/outline_color = Color(1, 0, 0, 1)
+shader_parameter/distance_falloff = 0.1
+shader_parameter/smoothing_cutoff = 0.1
+shader_parameter/smoothing_max = 0.1
+
+[resource]
+material = SubResource("ShaderMaterial_rweh0")
+size = Vector2(2, 2)

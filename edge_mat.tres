@@ -1,0 +1,20 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://dremaqtc8wusj"]
+
+[ext_resource type="Shader" path="res://edge2.gdshader" id="1_scc3o"]
+[ext_resource type="Shader" path="res://edge1.gdshader" id="2_evwkl"]
+[ext_resource type="Script" path="res://edge_mat.gd" id="2_tqciq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ny82r"]
+render_priority = 0
+shader = ExtResource("1_scc3o")
+shader_parameter/specular = null
+shader_parameter/metallic = null
+shader_parameter/roughness = null
+shader_parameter/edge_strength = 1.0
+shader_parameter/edge_color = Color(0, 1, 1, 1)
+
+[resource]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_ny82r")
+shader = ExtResource("2_evwkl")
+script = ExtResource("2_tqciq")

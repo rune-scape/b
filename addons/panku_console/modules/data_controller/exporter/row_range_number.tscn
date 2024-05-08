@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6w4d5bsp0erj"]
+
+[ext_resource type="Script" path="res://addons/panku_console/modules/data_controller/exporter/row_range_number.gd" id="1_ec6i8"]
+
+[node name="RowRangeNumber" type="HBoxContainer" node_paths=PackedStringArray("slider", "ledit")]
+offset_right = 285.0
+offset_bottom = 31.0
+script = ExtResource("1_ec6i8")
+slider = NodePath("HSlider")
+ledit = NodePath("LineEdit")
+
+[node name="VName" type="Label" parent="."]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "value2"
+
+[node name="HSlider" type="HSlider" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+size_flags_stretch_ratio = 1.5
+mouse_force_pass_scroll_events = false
+value = 30.0
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+text = "123.45"
+virtual_keyboard_type = 2
