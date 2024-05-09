@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dc00f0ae43roh"
+path="res://.godot/imported/twirlyguy.obj-c4972e7dd4b21f005d775a2b25cee64e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/twirlyguy.obj-c4972e7dd4b21f005d775a2b25cee64e.mesh"]
+
+source_file="res://twirlyguy.obj"
+dest_files=["res://.godot/imported/twirlyguy.obj-c4972e7dd4b21f005d775a2b25cee64e.mesh", "res://.godot/imported/twirlyguy.obj-c4972e7dd4b21f005d775a2b25cee64e.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

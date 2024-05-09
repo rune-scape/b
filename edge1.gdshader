@@ -15,5 +15,5 @@ void vertex() {
 }
 
 void fragment() {
-	ALBEDO = reflect(VIEW, world_normal);
+	NORMAL = world_normal;
 }

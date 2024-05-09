@@ -1,9 +1,10 @@
 shader_type spatial;
-render_mode  depth_prepass_alpha, depth_draw_opaque, unshaded;
+render_mode cull_front, depth_prepass_alpha, depth_draw_opaque, unshaded;
 
 uniform vec4 outline_color : source_color = vec4(0.0, 0.0, 0.0, 1.0);
-uniform float distance_falloff = 1.0;
-uniform float smoothing_bias = 0.0;
+uniform float distance_falloff : hint_range(0, 5) = 1;
+uniform float smoothing_min = 0.0;
+uniform float smoothing_max = 1.0;
 uniform sampler2D DEPTH_TEXTURE : hint_depth_texture, repeat_disable, filter_nearest;
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, repeat_disable, filter_nearest;
 
@@ -57,11 +58,11 @@ void fragment() {
 		abs_diff(d, dr) 
 	;
 	
-	ALPHA = pow(ALPHA, smoothing_bias >= 0.0 ? 1.0/(1.0+smoothing_bias) : 1.0-smoothing_bias);
+	ALPHA = mix(smoothing_min, smoothing_max, ALPHA);
 	
 	// apply the alpha from the outline color as well
 	ALPHA *= outline_color.a;
 	
 	// clamp the outline color to remove artifacts
-	//ALPHA = clamp(ALPHA, 0.0, 1.0);
+	ALPHA = clamp(ALPHA, smoothing_min, smoothing_max);
 }

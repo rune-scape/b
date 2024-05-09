@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://drts5af186u63"]
+
+[ext_resource type="Script" path="res://static_overlay.gd" id="1_kv3i0"]
+[ext_resource type="Shader" path="res://static_overlay.gdshader" id="1_p57w5"]
+
+[sub_resource type="Texture2DArray" id="Texture2DArray_gwlvo"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_p57w5")
+shader_parameter/xcubemap = SubResource("Texture2DArray_gwlvo")
+script = ExtResource("1_kv3i0")
+refresh = false

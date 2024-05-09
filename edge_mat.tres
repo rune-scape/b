@@ -2,7 +2,8 @@
 
 [ext_resource type="Shader" path="res://edge2.gdshader" id="1_scc3o"]
 [ext_resource type="Shader" path="res://edge1.gdshader" id="2_evwkl"]
-[ext_resource type="Script" path="res://edge_mat.gd" id="2_tqciq"]
+
+[sub_resource type="Texture2DArray" id="Texture2DArray_5vvoc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ny82r"]
 render_priority = 0
@@ -11,10 +12,10 @@ shader_parameter/specular = null
 shader_parameter/metallic = null
 shader_parameter/roughness = null
 shader_parameter/edge_strength = 1.0
-shader_parameter/edge_color = Color(0, 1, 1, 1)
+shader_parameter/edge_color = Color(0.290196, 0, 0.509804, 1)
+shader_parameter/xcubemap = SubResource("Texture2DArray_5vvoc")
 
 [resource]
 render_priority = 0
 next_pass = SubResource("ShaderMaterial_ny82r")
 shader = ExtResource("2_evwkl")
-script = ExtResource("2_tqciq")

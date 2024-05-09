@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://gqxyjsmupiyu"
+path="res://.godot/imported/pyramid_trianguly.obj-76b51fcbfb96d3492ba8a96a75fd8bad.mesh"
+
+[deps]
+
+files=["res://.godot/imported/pyramid_trianguly.obj-76b51fcbfb96d3492ba8a96a75fd8bad.mesh"]
+
+source_file="res://pyramid_trianguly.obj"
+dest_files=["res://.godot/imported/pyramid_trianguly.obj-76b51fcbfb96d3492ba8a96a75fd8bad.mesh", "res://.godot/imported/pyramid_trianguly.obj-76b51fcbfb96d3492ba8a96a75fd8bad.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

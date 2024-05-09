@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://c3pkughtk6jbf"]
+[gd_scene load_steps=6 format=3 uid="uid://c3pkughtk6jbf"]
 
 [ext_resource type="Script" path="res://control.gd" id="1_34qkh"]
-[ext_resource type="Material" uid="uid://dremaqtc8wusj" path="res://edge_mat.tres" id="2_2ci5c"]
-[ext_resource type="ArrayMesh" uid="uid://et60kni7w2mk" path="res://pyramid.obj" id="2_v5rnx"]
+[ext_resource type="Material" uid="uid://drts5af186u63" path="res://static_overlay.tres" id="2_7k7ik"]
 [ext_resource type="ArrayMesh" uid="uid://ycal1j1t5yob" path="res://pyramid_frame.obj" id="3_u7e0u"]
 [ext_resource type="QuadMesh" uid="uid://q1k20ukqdq53" path="res://depth_outline.tres" id="4_imclo"]
 
@@ -40,22 +39,24 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 stretch = true
-stretch_shrink = 5
+stretch_shrink = 4
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(256, 144)
+size = Vector2i(320, 180)
 render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 0.895067, 0.445932, 0, -0.445932, 0.895067, 0, 0.883242, 2.43834)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.116758, 5.25212)
+fov = 30.0
+size = 3.0
 
 [node name="Pyramid" type="MeshInstance3D" parent="SubViewportContainer/SubViewport"]
 unique_name_in_owner = true
-transform = Transform3D(0.628059, 0.266949, -0.729238, 0.772994, -0.305427, 0.553889, -0.0750031, -0.912671, -0.398682, 0, 0, 0)
-material_override = ExtResource("2_2ci5c")
-mesh = ExtResource("2_v5rnx")
+transform = Transform3D(-0.884322, 0, 0.46391, 0, 1, 0, -0.46391, 0, -0.884322, 0, 0, 0)
+material_override = ExtResource("2_7k7ik")
+mesh = ExtResource("3_u7e0u")
 skeleton = NodePath("../../..")
 
 [node name="PyramidFrame" type="MeshInstance3D" parent="SubViewportContainer/SubViewport"]
