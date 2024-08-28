@@ -1,13 +1,17 @@
-[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://drts5af186u63"]
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://drts5af186u63"]
 
 [ext_resource type="Script" path="res://static_overlay.gd" id="1_kv3i0"]
 [ext_resource type="Shader" path="res://static_overlay.gdshader" id="1_p57w5"]
+[ext_resource type="Texture2D" uid="uid://yyubt2rqdq2m" path="res://spiral.jpg" id="3_3o70k"]
+[ext_resource type="Texture2D" uid="uid://dh3gtpn0dqrv1" path="res://spiral_inv.jpg" id="4_ci0xg"]
 
-[sub_resource type="Texture2DArray" id="Texture2DArray_gwlvo"]
+[sub_resource type="Texture2DArray" id="Texture2DArray_erecc"]
 
 [resource]
 render_priority = 0
 shader = ExtResource("1_p57w5")
-shader_parameter/xcubemap = SubResource("Texture2DArray_gwlvo")
+shader_parameter/xcubemap = SubResource("Texture2DArray_erecc")
 script = ExtResource("1_kv3i0")
 refresh = false
+ximage = ExtResource("3_3o70k")
+ximage_inv = ExtResource("4_ci0xg")

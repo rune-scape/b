@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=3 uid="uid://673axy5v5ggg"]
+
+[ext_resource type="Script" path="res://control.gd" id="1_2jklr"]
+[ext_resource type="ArrayMesh" uid="uid://et60kni7w2mk" path="res://pyramid.obj" id="3_buaug"]
+[ext_resource type="QuadMesh" uid="uid://q1k20ukqdq53" path="res://depth_outline.tres" id="4_h5lf7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2yfax"]
+
+[sub_resource type="Environment" id="Environment_a2e3r"]
+background_mode = 1
+background_color = Color(0, 0, 0, 0)
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+reflected_light_source = 1
+
+[node name="control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2jklr")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+stretch_shrink = 8
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+debug_draw = 4
+size = Vector2i(160, 90)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.116758, 5.25212)
+fov = 30.0
+size = 3.0
+
+[node name="Pyramid" type="MeshInstance3D" parent="SubViewportContainer/SubViewport"]
+unique_name_in_owner = true
+transform = Transform3D(0.995403, 0, -0.0505579, 0, 1, 0, 0.0505579, 0, 0.995403, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_2yfax")
+mesh = ExtResource("3_buaug")
+skeleton = NodePath("../../..")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport"]
+environment = SubResource("Environment_a2e3r")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport"]
+mesh = ExtResource("4_h5lf7")

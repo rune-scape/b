@@ -18,9 +18,9 @@ enum {
 func _init():
 	_refresh()
 
+@export var ximage: Texture2D = preload("res://spiral.jpg")
+@export var ximage_inv: Texture2D = preload("res://spiral_inv.jpg")
 func _refresh():
-	var ximage := preload("res://spiral.jpg").get_image()
-	var ximage_inv := preload("res://spiral_inv.jpg").get_image()
 	var ximages: Array
 	ximages.resize(7)
 	ximages[0] = ximage
